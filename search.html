@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>search</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--Any additional css? -->
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One&display=swap" rel="stylesheet">
+
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  
+</head>
+
+<style>
+
+.searchbox {
+      overflow:hidden; 
+      border-top-left-radius:30px;
+      border-bottom-left-radius:30px;
+      border-top-right-radius:30px;
+      border-bottom-right-radius:30px;
+      border-style:solid;
+      border-width:1px;
+      width: 400px;
+      margin:100px auto;
+
+    }
+
+</style>
+
+<body>
+
+    <div class="shadow pl-3 py-1 pr-1 mb-1 searchbox">
+
+    <form id="buscador" action="#">
+    <input type="text" id="search-id" size="30" style="border:0;margin:auto;" placeholder="Busca cervezas.." name="search" >
+    <button type="submit" id="butt-id" style="border-radius:20px; float:right;">Busca</button>
+    </form>
+
+    </div>
+    
+    
+    <script>
+    var form = document.getElementById('buscador')
+    var userinput = document.getElementById('search-id');
+    
+    form.addEventListener("submit", function (event){
+    if (userinput.value.length == 0){
+    userinput.value = "Introduce tu búsqueda";
+    userinput.style.color = "red";
+    event.preventDefault();
+    } else if (userinput.value.length < 4) {
+    userinput.style.color = "red";
+    userinput.value = "Introduce un mínimo de 4 caracteres"
+    event.preventDefault();
+    } else {
+    userinput.style.color = "green";
+    userinput.value = "Buscando...";
+    event.preventDefault();   
+    }
+    
+    });
+    
+    form.addEventListener("input", function(){
+    userinput.style.color = "black";    
+    })
+    
+    userinput.addEventListener("click", function () {
+    userinput.value = "";
+    });
+    
+
+    </script>
+
+
+</body>
+

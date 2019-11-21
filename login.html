@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>login</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--Any additional css? -->
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<style>
+
+
+:root {
+--main:  #d28a04;
+--second: black;
+--third: #ffffcc;
+--maingray: #e6e4e4;
+--mybrown: #b6977a;
+--darkbrown: #570202;
+}
+
+.wrong {
+color: rgb(184, 2, 2);
+}
+
+.form-style {
+background-color: var(--mybrown);
+}
+
+.text-field {
+width: 50%;
+}
+
+label, button {
+font-family: 'Contrail One', cursive;
+}
+
+.signup-style {
+border: 2px solid var(--main);
+}
+
+.passwrd {
+width: 250px;
+}
+
+.dropdown {
+width: 75%;
+}
+
+.error {
+color: orangered;
+font-size: .8em;
+}
+
+.error2 {
+color: orangered;
+font-size: .8em;
+}
+
+
+</style>
+
+<body>
+
+<div class="container">
+    <div class="col8 mt-5 form-style rounded">
+        <form novalidate id="form-login" class="p-5">
+            <div class="form-group text-field">
+              <label for="InputEmail">Email</label>
+              <input type="email" class="form-control" id="mail" placeholder="Introduce email">
+              <div id="mail-error"></div>
+            </div>
+            <div class="form-group text-field">
+              <label for="InputPassword">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+              <div id="pass-error"></div>
+            </div>
+            <button type="submit" class="btn mt-3 btn-primary">Enviar</button>
+        </form>
+
+
+    </div>
+
+</div>
+    
+<script>
+var form  = document.getElementById('form-login');
+var email = document.getElementById('mail');
+var password = document.getElementById('password');
+var error = document.getElementById('mail-error');
+var error2 = document.getElementById('pass-error');
+var emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+// possibles errors de camp buit o email incorrecte al fer submit
+
+form.addEventListener("submit", function (event) {
+  if (email.value.length == "0") { 
+    error.className = "wrong";
+    error.innerHTML = "Es necesario rellenar este campo";
+    event.preventDefault();
+
+  } else if (!emailRegExp.test(email.value)){
+    error.className = "wrong";
+    error.innerHTML = "Formato de mail no válido";
+    event.preventDefault(); 
+  } 
+  
+  if (password.value.length == "0") { 
+    error2.className = "wrong";
+    error2.innerHTML = "Es necesario rellenar este campo";
+    event.preventDefault();
+  }
+
+});
+
+//en introduir nou input borrar possibles errors
+
+password.addEventListener("input", function (event) {
+  if (!password.value.length == "0") {
+    error2.innerHTML = ""; 
+    error2.classList.remove = "wrong";
+  }
+});
+
+email.addEventListener("input", function (event) {
+  if (!email.value.length == "0") {
+    error.innerHTML = ""; 
+    error.classList.remove = "wrong";
+  }
+});
+
+</script>
+
+</body>
+
+
+</html>
